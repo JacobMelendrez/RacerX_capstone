@@ -1,0 +1,31 @@
+{
+  "name": "racerx_capstone",
+  "version": "1.0.0",
+  "description": "",
+  "main": "script.js",
+  "scripts": {
+    "start": "nodemon -r esm index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JacobMelendrez/RacerX_capstone.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "start": "nodemon -r esm index.js"
+  },
+  "homepage": "https://github.com/JacobMelendrez/RacerX_capstone#readme",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "cookie": "^0.4.2",
+    "cookie-parser": "^1.4.6",
+    "esm": "^3.2.25",
+    "express": "^4.17.3",
+    "express-handlebars": "^6.0.5",
+    "nodemon": "^2.0.15",
+    "sqlite": "^4.0.25",
+    "sqlite3": "^5.0.2",
+    "uuid": "^3.4.0"
+  }
+}

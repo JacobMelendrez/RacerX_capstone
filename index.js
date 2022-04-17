@@ -64,6 +64,12 @@ app.get('/login', (req, res) =>{
     res.render('login')
 })
 
+//logs out the user when they are logged in
+app.get('/logout', (req, res) =>{
+    res.clearCookie('authToken');
+    res.redirect('/');
+})
+
 app.get('/create_conference', (req, res)=>{
     res.render("create_conference", { user: req.user });
 })

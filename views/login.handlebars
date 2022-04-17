@@ -1,8 +1,10 @@
     <div class="login_face">
         <img src="/static/Logo.png" alt="Trulli" width="300" height="300">
-        <input type="text" placeholder="username" name="username"><br>
-        <input type="text" placeholder="password" name="password"><br>
-        <button type="submit">Login</button><br>
+        <form action="/login" method="POST">
+            <input type="email" placeholder="email" name="email"><br>
+            <input type="password" placeholder="password" name="password"><br>
+            <button type="submit">Login</button><br>
+        </form>
         <a href="forgot_password">forgot password</a><br>
-        <a href="create_account">create account</a>
+        <a href="/register">create account</a>
     </div>

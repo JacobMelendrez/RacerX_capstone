@@ -74,6 +74,22 @@ app.get('/create_conference', (req, res)=>{
     res.render("create_conference", { user: req.user });
 })
 
+// Retrieves events and posts them on home page - Rishab
+app.get("/event", async (req, res) =>{
+    const db = await dbPromise;
+    const events = await db.all(
+        `SELECT
+        Events.id,
+        Events.title,
+        Events.eventDescription,
+        Events.startTime,
+        Events.endTime
+        Users.username as authorName
+        FROM Events LEFT JOIN Users WHERE Events.authorId = Users.id`
+    );
+    res.render("home", {events, user: req.user});
+});
+
 app.post('/register', async (req, res)=>{
     const db = await dbPromise;
     const {
@@ -130,6 +146,26 @@ app.post('/message', async (req, res) =>{
     const db = await dbPromise;
     await db.run('INSERT INTO Messages (content, authorId) VALUES (?, ?);', req.body.message, req.user.id);
     res.redirect('/');
+});
+
+// Added code for post conference details to DB - Rishab 
+app.post('/create_conference', async(req, res) =>{
+    //Write event details to db
+    const db = await dbPromise;
+    const {
+        event_title,
+        event_description,
+        start_date,
+        end_date
+    } = req.body;
+    try{
+        await db.run('INSERT INTO Events (primary_key, author_ID, event_title, event_description, start_date, end_date) VALUE (?, ?, ?, ?, ?, ?);', null, null, event_title, event_description, start_date, end_date);
+        console.log('Data inserted successfully');
+    }
+    catch (e){
+        return res.render('create_conference', {error: e})
+    }
+    res.redirect('create_conference')
 });
 
 const setup = async () => {

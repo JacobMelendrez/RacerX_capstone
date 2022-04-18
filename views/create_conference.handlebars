@@ -44,28 +44,32 @@
         <a hred="draw">&#9998;</a>
     </div>
     <div class="new_conference">
-        <label for="category">Category</label>
-        <input type="text" id="category" value="Public Category"><br>
-        <button>Choose category</button><br>
-        <label for="event_title">Event title</label>
-        <input type="text" id="event_title" value="Enter event title"><br>
-        <label for="start_date">Start</label>
-        <input type="date" id="start_date">
-        <input type="time" id="start_date">
-        <label>&#127758;</label><br>
-        <label for="end_date">End</label>
-        <input type="date" id="end_date">
-        <input type="time" id="end_date">
-        <label>&#127758;</label><br>
-        <label for="timezone">Timezone</label>
-        <input type="text" id="timezone" value="don't use for right now"><br>
-        <label for="location">Location</label>
-        <input type="text" value="venue">
-        <input type="room" value="room"><br>
-        <label for="protection_mode">Protection Mode</label>
-        <button>public</button>
-        <button>inheriting</button>
-        <button>protected</button><br>
-        <button>create event</button>
-        <button>cancel</button> 
+        <form action="/create_conference" method="POST">
+            <label for="category">Category</label>
+            <input type="text" id="category" value="Public Category"><br>
+            <button>Choose category</button><br>
+            <label for="event_title">Event title</label>
+            <input type="text" id="event_title" value="Enter event title"><br>
+            <label for="event_description">Event Description</label>
+            <input type="text" id="event_description" value="Enter event description"><br>
+            <label for="start_date">Start</label>
+            <input type="date" id="start_date">
+            <input type="time" id="start_date">
+            <label>&#127758;</label><br>
+            <label for="end_date">End</label>
+            <input type="date" id="end_date">
+            <input type="time" id="end_date">
+            <label>&#127758;</label><br>
+            <label for="timezone">Timezone</label>
+            <input type="text" id="timezone" value="don't use for right now"><br>
+            <label for="location">Location</label>
+            <input type="text" value="venue">
+            <input type="room" value="room"><br>
+            <label for="protection_mode">Protection Mode</label>
+            <button>public</button>
+            <button>inheriting</button>
+            <button>protected</button><br>
+            <button type="submit">create event</button>
+            <button>cancel</button>
+        </form>
     </div>

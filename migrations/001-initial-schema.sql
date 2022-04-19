@@ -23,7 +23,8 @@ CREATE TABLE Messages (
 CREATE TABLE Events (
     id INTEGER PRIMARY KEY,
     title STRING,
-    eventDescription STRING
+    eventDescription STRING,
+    zoomLink STRING
 );
 
 -- Down

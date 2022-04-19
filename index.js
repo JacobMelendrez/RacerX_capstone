@@ -41,13 +41,25 @@ app.get("/", async (req, res) => {
     //read messages from database
     //console.log('request user', req.user);
     const db = await dbPromise;
+    const eventList = await db.all(
+        `SELECT * FROM Events;`
+    );
+    /*await db.run("SELECT * FROM Events", async(err, res)=>{
+        if (err) throw err;
+        else{
+            console.log('success')
+            res.send(res)
+        }
+    });
+    console.log('Query ran successfully');*/
     /*const messages = await db.all(`SELECT 
         Messages.id,
         Messages.content,
         Users.username as authorName
     FROM Messages LEFT JOIN Users WHERE Messages.authorId = Users.id`);
     console.log('messages', messages)*/
-    res.render("home", { user: req.user });
+    console.log(eventList);
+    res.render("home", { eventList });
 });
 
 app.get('/register', (req, res) =>{
@@ -154,12 +166,13 @@ app.post('/create_conference', async(req, res) =>{
     const db = await dbPromise;
     const {
         event_title,
-        event_description
+        event_description,
+        zoom_link
     } = req.body;
 
     console.log(req.body);
     try{
-        await db.run('INSERT INTO Events (authorId, title, eventDescription) VALUES (?, ?);', req.user.id, event_title, event_description);
+        await db.run('INSERT INTO Events (authorId, title, eventDescription, zoomLink) VALUES (?, ?, ?);', req.user.id, event_title, event_description, zoom_link);
         console.log('Data inserted successfully');
     }
     catch (e){

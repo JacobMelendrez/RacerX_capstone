@@ -1,22 +1,4 @@
-{{#if user}}
-    <div class="header">
-        <img src="../Logo.png" alt="Trulli" width="100" height="100">
-        <div class="header_menu">
-            <a class="active" href="#public">&#127758; public &#x25BE;</a>
-            <a href="#time_zone">&#128337; America/Pheonix &#x25BE;</a>
-            <a href="/logout">log out</a>
-        </div>
-    </div>
-{{else}}
-    <div class="header">
-        <img src="/static/Logo.png" alt="Trulli" width="100" height="100">
-        <div class="header_menu">
-            <a class="active" href="#public">&#127758; public &#x25BE;</a>
-            <a href="#time_zone">&#128337; America/Pheonix &#x25BE;</a>
-            <a href="/login">login</a>
-        </div>
-    </div>
-{{/if}}
+    {{> header }}
     <div class="navbar">
         <a href="../index.html">Home</a>
         <a href="#create event">Create event &#x25BE;</a>
@@ -50,3 +32,7 @@
         <img src="/static/baseProfilePic.png"  width="100" height="100" class="profile">
         <p class="profile">profile name</p>
     </div>
+    <script type="text/javascript" src="../static/timezone.js"></script>
+    <script type="text/javascript">
+        main();
+    </script>

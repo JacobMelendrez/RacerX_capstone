@@ -59,7 +59,7 @@ app.get("/", async (req, res) => {
     FROM Messages LEFT JOIN Users WHERE Messages.authorId = Users.id`);
     console.log('messages', messages)*/
     console.log(eventList);
-    res.render("home", { eventList });
+    res.render("home", { eventList, user: req.user });
 });
 
 app.get('/register', (req, res) =>{

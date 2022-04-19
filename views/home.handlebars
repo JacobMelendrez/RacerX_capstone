@@ -46,7 +46,12 @@
     <div class="main_body">
         <p style="text-align: center;">Welcome</p>
         <ul>
-            <li></li>
+            <form action="/" method="GET" >
+                <b>Events</b>
+                {{#each eventList}}
+                    <li href="event">{{this.title}} - {{this.eventDescription}}</li>
+                {{/each}} 
+            </form>
         </ul>
     </div>
     

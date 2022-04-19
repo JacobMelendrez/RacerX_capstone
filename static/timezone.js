@@ -153,7 +153,7 @@ function main () {
       'America/Nome',
       'America/Adak',
       'America/Montevideo',
-      'America/Caracas'
+      'America/Caracas',
     ];
 
     if (localStorage.getItem('DATA') === null) {
@@ -209,6 +209,7 @@ function main () {
 
     // convert the time to selected timezone, store it in localstorage for caching and recall the render method to update timezone UI
     let result = helper.convertTimezone(new Date(), event.target.value);
+    console.log(result);
     localStorage.setItem('CURRENT_TIMEZONE', JSON.stringify({ time: result.toString(), timezone: event.target.value}));
     helper.render();
   });

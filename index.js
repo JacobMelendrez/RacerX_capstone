@@ -24,11 +24,12 @@ app.use('/static', express.static(__dirname + '/static'));
 app.use(async (req, res, next) =>{
     const {authToken} = req.cookies;
     if(!authToken){
-        console.log('request from user not logged in');
+        //console.log('request from user not logged in');
         return next();
     }
     try {
         const user = await lookUpUserFromAuthToken(authToken);
+        //console.log('request from user', user.username);
         req.user = user;
     } catch (e) {
         next(e);
@@ -38,15 +39,27 @@ app.use(async (req, res, next) =>{
 
 app.get("/", async (req, res) => {
     //read messages from database
-    console.log('request user', req.user);
+    //console.log('request user', req.user);
     const db = await dbPromise;
+    const eventList = await db.all(
+        `SELECT * FROM Events;`
+    );
+    /*await db.run("SELECT * FROM Events", async(err, res)=>{
+        if (err) throw err;
+        else{
+            console.log('success')
+            res.send(res)
+        }
+    });
+    console.log('Query ran successfully');*/
     /*const messages = await db.all(`SELECT 
         Messages.id,
         Messages.content,
         Users.username as authorName
     FROM Messages LEFT JOIN Users WHERE Messages.authorId = Users.id`);
     console.log('messages', messages)*/
-    res.render("home", { user: req.user });
+    console.log(eventList);
+    res.render("home", { eventList, user: req.user });
 });
 
 app.get('/register', (req, res) =>{
@@ -70,7 +83,6 @@ app.get('/logout', (req, res) =>{
 })
 
 app.get('/create_conference', (req, res)=>{
-    console.log(req.user);
     res.render("create_conference", { user: req.user });
 })
 
@@ -136,7 +148,7 @@ app.post('/login', async (req, res) =>{
     }
 })
 
-app.post('/message', async (req, res) =>{
+/*app.post('/create_conference', async (req, res) =>{
     //write messages to database
     //messages.push(req.body.message);
     if(!req.user){
@@ -146,7 +158,7 @@ app.post('/message', async (req, res) =>{
     const db = await dbPromise;
     await db.run('INSERT INTO Messages (content, authorId) VALUES (?, ?);', req.body.message, req.user.id);
     res.redirect('/');
-});
+});*/
 
 // Added code for post conference details to DB - Rishab 
 app.post('/create_conference', async(req, res) =>{
@@ -155,15 +167,18 @@ app.post('/create_conference', async(req, res) =>{
     const {
         event_title,
         event_description,
-        start_date,
-        end_date
+        zoom_link
     } = req.body;
+
+    console.log(req.body);
     try{
-        await db.run('INSERT INTO Events (primary_key, author_ID, event_title, event_description, start_date, end_date) VALUE (?, ?, ?, ?, ?, ?);', null, null, event_title, event_description, start_date, end_date);
+        await db.run('INSERT INTO Events (authorId, title, eventDescription, zoomLink) VALUES (?, ?, ?);', req.user.id, event_title, event_description, zoom_link);
         console.log('Data inserted successfully');
     }
     catch (e){
+        console.log('Data was not inserted successfully', e);
         return res.render('create_conference', {error: e})
+
     }
     res.redirect('create_conference')
 });

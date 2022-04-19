@@ -20,7 +20,14 @@ CREATE TABLE Messages (
     FOREIGN KEY (authorId) REFERENCES Users (id)
 );
 
+CREATE TABLE Events (
+    id INTEGER PRIMARY KEY,
+    title STRING,
+    eventDescription STRING
+);
+
 -- Down
 DROP TABLE Users;
 DROP TABLE AuthTokens;
-DROP TABLE Messages
+DROP TABLE Messages;
+DROP TABLE Events;

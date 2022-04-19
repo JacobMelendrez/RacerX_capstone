@@ -1,26 +1,20 @@
-{{#if user}}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Racer X - profile</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
     <div class="header">
-        <img src="/static/Logo.png" alt="Trulli" width="100" height="100">
+        <img src="../Logo.png" alt="Trulli" width="100" height="100">
         <div class="header_menu">
             <a class="active" href="#public">&#127758; public &#x25BE;</a>
-            <select name="timezone_dropdown" id="timezone_dropdown">
-                <option onclick="return;">Select a timezone</option>
-            </select>
-            <a href='/logout'>log out</a>
+            <a href="#time_zone">&#128337; America/Pheonix &#x25BE;</a>
+            <a href="login.html">login</a>
         </div>
     </div>
-{{else}}
-    <div class="header">
-        <img src="/static/Logo.png" alt="Trulli" width="100" height="100">
-        <div class="header_menu">
-            <a class="active" href="#public">&#127758; public &#x25BE;</a>
-            <select name="timezone_dropdown" id="timezone_dropdown">
-                <option onclick="return;">Select a timezone</option>
-            </select>
-            <a href="/login">login</a>
-        </div>
-    </div>
-{{/if}}
     <div class="navbar">
         <a href="../index.html">Home</a>
         <a href="#create event">Create event &#x25BE;</a>
@@ -51,6 +45,12 @@
         <p>Dashboard</p>
     </div>
     <div class="profile_body" style="flex-direction: row;">
-        <img src="/static/baseProfilePic.png"  width="100" height="100" class="profile">
+        <img src="baseProfilePic.png"  width="100" height="100" class="profile">
         <p class="profile">profile name</p>
     </div>
+    <footer>
+        <a href="help">help</a>
+        <a href="contact">contact</a>
+    </footer>
+</body>
+</html>

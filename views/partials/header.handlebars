@@ -1,0 +1,16 @@
+<div class="header">
+  <img src="/static/Logo.png" alt="Trulli" width="100" height="100">
+  <div class="header_menu">
+    <a class="active" href="#public">&#127758; public &#x25BE;</a>
+    <select name="timezone_dropdown" id="timezone_dropdown">
+      <option onclick="return;">Select a timezone</option>
+    </select>
+    {{#if user}}
+    <a href='/logout'>log out</a>
+    {{else}}
+    <a href='/login'>log in</a>
+    {{/if}}
+  </div>
+  <h1 id="current_timezone" style="color: white;"></h1>
+  <h3 id="current_time" style="color: white;"></h3>
+</div>

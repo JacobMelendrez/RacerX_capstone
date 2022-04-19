@@ -1,22 +1,5 @@
-{{#if user}}
-    <div class="header">
-        <img src="/static/Logo.png" alt="Trulli" width="100" height="100">
-        <div class="header_menu">
-            <a class="active" href="#public">&#127758; public &#x25BE;</a>
-            <a href="#time_zone">&#128337; America/Pheonix &#x25BE;</a>
-            <a href="/logout">log out</a>
-        </div>
-    </div>
-{{else}}
-    <div class="header">
-        <img src="/static/Logo.png" alt="Trulli" width="100" height="100">
-        <div class="header_menu">
-            <a class="active" href="#public">&#127758; public &#x25BE;</a>
-            <a href="#time_zone">&#128337; America/Pheonix &#x25BE;</a>
-            <a href="/login">login</a>
-        </div>
-    </div>
-{{/if}}
+{{> header }}
+</div>
     <div class="navbar">
         <a href="/">Home</a>
         <div class="create_event_dropdown">
@@ -45,16 +28,14 @@
     </div>
     <div class="new_conference">
         <form action="/create_conference" method="POST">
-            <!--<label for="category">Category</label>
+            <label for="category">Category</label>
             <input type="text" id="category" value="Public Category"><br>
-            <button>Choose category</button><br>-->
+            <button>Choose category</button><br>
             <label for="event_title">Event title</label>
-            <input type="text" id="event_title" placeholder="Enter event title" name="event_title"><br>
+            <input type="text" id="event_title" value="Enter event title"><br>
             <label for="event_description">Event Description</label>
-            <input type="text" id="event_description" placeholder="Enter event description" name="event_description"><br>
-            <label for="zoom_link">Zoom Link</label>
-            <input type="text" id="zoom_link" placeholder="Enter Zoom link" name="zoom_link"><br>
-            <!--<label for="start_date">Start</label>
+            <input type="text" id="event_description" value="Enter event description"><br>
+            <label for="start_date">Start</label>
             <input type="date" id="start_date">
             <input type="time" id="start_date">
             <label>&#127758;</label><br>
@@ -70,8 +51,13 @@
             <label for="protection_mode">Protection Mode</label>
             <button>public</button>
             <button>inheriting</button>
-            <button>protected</button><br>-->
+            <button>protected</button><br>
             <button type="submit">create event</button>
             <button>cancel</button>
         </form>
     </div>
+
+<script type="text/javascript" src="../static/timezone.js"></script>
+<script type="text/javascript">
+    main();
+</script>

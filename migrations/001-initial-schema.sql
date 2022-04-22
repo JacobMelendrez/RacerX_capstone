@@ -13,22 +13,16 @@ CREATE TABLE AuthTokens (
     FOREIGN KEY (userId) REFERENCES Users (id)
 );
 
-CREATE TABLE Messages (
-    id INTEGER PRIMARY KEY,
-    authorId INTEGER,
-    content STRING,
-    FOREIGN KEY (authorId) REFERENCES Users (id)
-);
-
 CREATE TABLE Events (
     id INTEGER PRIMARY KEY,
+    authorId INTEGER,
     title STRING,
     eventDescription STRING,
-    zoomLink STRING
+    zoomLink STRING,
+    FOREIGN KEY (authorId) REFERENCES Users (id)
 );
 
 -- Down
 DROP TABLE Users;
 DROP TABLE AuthTokens;
-DROP TABLE Messages;
 DROP TABLE Events;

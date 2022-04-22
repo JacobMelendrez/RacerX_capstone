@@ -171,8 +171,9 @@ app.post('/create_conference', async(req, res) =>{
     } = req.body;
 
     console.log(req.body);
+    console.log(req.user.id);
     try{
-        await db.run('INSERT INTO Events (authorId, title, eventDescription, zoomLink) VALUES (?, ?, ?);', req.user.id, event_title, event_description, zoom_link);
+        await db.run('INSERT INTO Events (authorId, title, eventDescription, zoomLink) VALUES (?, ?, ?, ?);', req.user.id, event_title, event_description, zoom_link);
         console.log('Data inserted successfully');
     }
     catch (e){
@@ -180,7 +181,7 @@ app.post('/create_conference', async(req, res) =>{
         return res.render('create_conference', {error: e})
 
     }
-    res.redirect('create_conference')
+    res.redirect('/')
 });
 
 const setup = async () => {

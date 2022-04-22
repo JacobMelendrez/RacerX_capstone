@@ -89,21 +89,39 @@ app.get('/create_conference', (req, res)=>{
 
 // Retrieves events and posts them on home page - Rishab
 app.get("/event", async (req, res) =>{
+    console.log("Testing 2 ", eventID);
     const db = await dbPromise;
-    const events = await db.all(
-        `SELECT
-        Events.id,
-        Events.title,
-        Events.eventDescription,
-        Events.zoomLink,
-        Events.startDate,
-        Events.startTime,
-        Events.endDate,
-        Events.endTime
-        FROM Events;`
+    const events = await db.get(
+        `SELECT 
+            title,
+            eventDescription,
+            zoomLink,
+            startDate,
+            startTime,
+            endDate,
+            endTime
+        FROM Events WHERE id = ?;`, eventID.id
     );
+    console.log("Testing 3 ", events);
     res.render("event", {events});
 });
+
+var eventID;
+
+app.post('/', async(req, res)=>{
+    const db = await dbPromise;
+    console.log(req.body.test)
+    try {
+        eventID = await db.get(
+            `SELECT id
+            FROM Events WHERE id = ?`, req.body.test
+        );
+        console.log("Testing ", eventID);
+        res.redirect("/event")
+    } catch (e){
+        console.log({error: e});
+    }
+})
 
 app.post('/register', async (req, res)=>{
     const db = await dbPromise;
@@ -179,8 +197,8 @@ app.post('/create_conference', async(req, res) =>{
 
     console.log(req.body);
     try{
-        await db.run('INSERT or REPLACE INTO Events (id, title, eventDescription, zoomLink, startDate, startTime, endDate, endTime) VALUES (?, ?, ?, ?, ?, ?, ?, ?);', 
-        req.user.id, event_title, event_description, zoom_link, start_date, start_time, end_date, end_time);
+        await db.run('INSERT or REPLACE INTO Events ( title, eventDescription, zoomLink, startDate, startTime, endDate, endTime) VALUES ( ?, ?, ?, ?, ?, ?, ?);', 
+        event_title, event_description, zoom_link, start_date, start_time, end_date, end_time);
         console.log('Data inserted successfully');
     }
     catch (e){
@@ -190,10 +208,6 @@ app.post('/create_conference', async(req, res) =>{
     }
     res.redirect('/')
 });
-
-function cancel(){
-    res.render('create_conference');
-}
 
 const setup = async () => {
     const db = await dbPromise;

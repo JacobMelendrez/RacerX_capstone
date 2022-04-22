@@ -101,22 +101,19 @@
         <div class="timezone">US/Arizona</div>
     </div>
 </div>
-
+    <form action="/event" method="GET">
     <div>
         <p>
-            <form action="/event" method="GET" >
                 <b>Event Details</b>
-                {{#each events}}
-                    <b>{{this.title}}</b>
-                    <p>{{this.eventDescription}}</p>
-                    <p>Starts: {{this.startDate}} - {{this.startTime}}</p>
-                    <p>Ends: {{this.endDate}} - {{this.endTime}}</p>
-                    <p>Zoom Link: <a href={{this.zoomLink}}>{{this.zoomLink}}</a></p>
-                {{/each}} 
-            </form>
+                    <b>{{events.title}}</b>
+                    <p>{{events.eventDescription}}</p>
+                    <p>Starts: {{events.startDate}} - {{events.startTime}}</p>
+                    <p>Ends: {{events.endDate}} - {{events.endTime}}</p>
+                    <p>Zoom Link: <a href={{events.zoomLink}}>{{events.zoomLink}}</a></p>
         </p>
+        {{#each event}}{{/each}}
     </div>
-
+    </form>
     <script type="text/javascript" src="../static/timezone.js"></script>
     <script type="text/javascript">
         main();

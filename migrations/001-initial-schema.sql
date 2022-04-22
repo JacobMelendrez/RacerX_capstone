@@ -14,7 +14,7 @@ CREATE TABLE AuthTokens (
 );
 
 CREATE TABLE Events (
-    id INTEGER,
+    id INTEGER PRIMARY KEY,
     title STRING,
     eventDescription STRING,
     zoomLink STRING,

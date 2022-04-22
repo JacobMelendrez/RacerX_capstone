@@ -95,12 +95,14 @@ app.get("/event", async (req, res) =>{
         Events.id,
         Events.title,
         Events.eventDescription,
+        Events.zoomLink,
+        Events.startDate,
         Events.startTime,
+        Events.endDate,
         Events.endTime
-        Users.username as authorName
-        FROM Events LEFT JOIN Users WHERE Events.authorId = Users.id`
+        FROM Events;`
     );
-    res.render("home", {events, user: req.user});
+    res.render("event", {events});
 });
 
 app.post('/register', async (req, res)=>{
@@ -168,13 +170,17 @@ app.post('/create_conference', async(req, res) =>{
     const {
         event_title,
         event_description,
-        zoom_link
+        zoom_link,
+        start_date,
+        start_time,
+        end_date,
+        end_time
     } = req.body;
 
     console.log(req.body);
-    console.log(req.user.id);
     try{
-        await db.run('INSERT INTO Events (authorId, title, eventDescription, zoomLink) VALUES (?, ?, ?, ?);', req.user.id, event_title, event_description, zoom_link);
+        await db.run('INSERT or REPLACE INTO Events (id, title, eventDescription, zoomLink, startDate, startTime, endDate, endTime) VALUES (?, ?, ?, ?, ?, ?, ?, ?);', 
+        req.user.id, event_title, event_description, zoom_link, start_date, start_time, end_date, end_time);
         console.log('Data inserted successfully');
     }
     catch (e){

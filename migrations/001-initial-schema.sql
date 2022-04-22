@@ -14,12 +14,14 @@ CREATE TABLE AuthTokens (
 );
 
 CREATE TABLE Events (
-    id INTEGER PRIMARY KEY,
-    authorId INTEGER,
+    id INTEGER,
     title STRING,
     eventDescription STRING,
     zoomLink STRING,
-    FOREIGN KEY (authorId) REFERENCES Users (id)
+    startDate STRING,
+    startTime STRING,
+    endDate STRING,
+    endTime STRING
 );
 
 -- Down

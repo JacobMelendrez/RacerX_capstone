@@ -1,30 +1,20 @@
     {{> header }}
     <div class="navbar">
         <a href="/">Home</a>
-        <div class="create_event_dropdown">
+        <!--<div class="create_event_dropdown">
             <button class="event_dropdown">Create Event &#x25BE;</button>
             <div class="create_event_dropdown_list">
                 <a href="#create_lecture">Create Lecture</a>
                 <a href="#create_meeting">Create Meeting</a>
                 <a href="/create_conference">Create Conference</a>
             </div>
-        </div>
-        <a href="#room booking">Room booking</a>
-        <a href="#administration">Administration</a>
+        </div>-->
+        <a href="/create_conference">Create Conference</a>
+        <!--<a href="#room booking">Room booking</a>
+        <a href="#administration">Administration</a>-->
         <a href="#profile">My profile</a>
     </div>
-    <div class="event_navbar">
-        <a style="color:rgb(241, 154, 23); font-size: larger; margin-right: 55%;">All events</a>
-        <div class="search">
-            <input type="text" placeholder="Search.." name="search">
-            <button type="submit">&#128269;</button>
-        </div>
-        <a href="create_event" class="active">Create Event &#x25BE;</a>
-        <a href="navigate">	&#129517; navigate</a>
-        <a href="calender">&#128197;</a>
-        <a href="eye">&#128065; &#x25BE;</a>
-        <a hred="draw">&#9998;</a>
-    </div>
+
     <div class="new_conference">
         <form action="/create_conference" method="POST">
             <!--<label for="category">Category</label>
@@ -33,10 +23,10 @@
             <label for="event_title">Event title</label>
             <input type="text" id="event_title" placeholder="Enter event title" name="event_title"><br>
             <label for="event_description">Event Description</label>
-            <input type="text" id="event_description" placeholder="Enter event description" name="event_description"><br>
+            <textarea type="text" id="event_description" placeholder="Enter event description" name="event_description" rows="4" cols="50"></textarea><br>
             <label for="zoom_link">Zoom Link</label>
             <input type="text" id="zoom_link" placeholder="Enter Zoom link" name="zoom_link"><br>
-            <!--<label for="start_date">Start</label>
+            <label for="start_date">Start</label>
             <input type="date" id="start_date">
             <input type="time" id="start_date">
             <label>&#127758;</label><br>
@@ -44,7 +34,7 @@
             <input type="date" id="end_date">
             <input type="time" id="end_date">
             <label>&#127758;</label><br>
-            <label for="timezone">Timezone</label>
+            <!--<label for="timezone">Timezone</label>
             <input type="text" id="timezone" value="don't use for right now"><br>
             <label for="location">Location</label>
             <input type="text" value="venue">

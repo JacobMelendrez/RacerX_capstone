@@ -104,7 +104,16 @@
 
     <div>
         <p>
-            <!-- TODO Event Description will go here-->Rishab
+            <form action="/event" method="GET" >
+                <b>Event Details</b>
+                {{#each events}}
+                    <b>{{this.title}}</b>
+                    <p>{{this.eventDescription}}</p>
+                    <p>Starts: {{this.startDate}} - {{this.startTime}}</p>
+                    <p>Ends: {{this.endDate}} - {{this.endTime}}</p>
+                    <p>Zoom Link: <a href={{this.zoomLink}}>{{this.zoomLink}}</a></p>
+                {{/each}} 
+            </form>
         </p>
     </div>
 

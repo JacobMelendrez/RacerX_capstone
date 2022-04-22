@@ -6,6 +6,7 @@ import { open } from 'sqlite';
 
 import cookieParser from 'cookie-parser';
 import { grantAuthToken, lookUpUserFromAuthToken } from './authorize';
+import res from 'express/lib/response';
 
 export const dbPromise = open({
     filename: "data.db",
@@ -183,6 +184,10 @@ app.post('/create_conference', async(req, res) =>{
     }
     res.redirect('/')
 });
+
+function cancel(){
+    res.render('create_conference');
+}
 
 const setup = async () => {
     const db = await dbPromise;

@@ -1,0 +1,103 @@
+    {{> header }}
+    <div class="navbar">
+        <a href="/">Home</a>
+        <a href="/create_conference">Create Conference</a>
+        <a href="/profile">My profile</a>
+    </div>
+    <div class="conf_leftMenu">
+                
+        <ul id="outer">
+                
+            <li class="menuConfTitle selected menuConfSelected">
+                <a href="/event">Overview</a>
+            </li>
+            <li class="menuConfTitle">
+                <a href="/event/registrations">Registration</a>              
+            </li>
+            <li class="menuConfTitle">
+                <a href="/event/2018/program">Scientific Program</a>
+            </li>
+            <li class="menuConfTitle">
+                <a href="/event/abstracts">Call for Abstracts</a><ul class="inner"></ul>              
+            </li>
+            <li class="menuConfTitle">
+                <a href="/event/2018/timetable/">Timetable</a>             
+            </li>
+            <li class="menuConfTitle">
+                <a href="/event/2018/contributions/">Contribution List</a>               
+            </li>
+            <li class="menuConfTitle">
+                <a href="/event/2018/contributions/authors">Author List</a>
+            </li>
+            <li class="menuConfTitle">
+                <a href="/event/2018/contributions/speakers">Speaker List</a>
+            </li>
+            <li class="menuConfTitle">
+                <a href="/event/2018/papers/">Paper Peer Reviewing</a><ul class="inner">
+            <li class="menuConfMiddleCell">
+                <a href="/event/2018/papers/reviewing/">Reviewing Area</a>
+            </li>
+            <li class="menuConfMiddleCell">
+                <a href="/event/2018/papers/judging/">Judging Area</a></li></ul>             
+            </li>
+            <li class="menuConfTitle">
+                <a class="no-link">Editing</a>
+                <ul class="inner">
+                    <li class="menuConfMiddleCell">
+                        <a href="/event/2018/editing/paper/list">Papers</a>
+                    </li>
+                    <li class="menuConfMiddleCell">
+                        <a href="/event/2018/editing/slides/list">Slides</a>
+                    </li>
+                    <li class="menuConfMiddleCell">
+                        <a href="/event/2018/editing/poster/list">Posters</a></li></ul>                
+                    </li>
+            <li class="menuConfTitle">
+                <a href="/event/2018/book-of-abstracts.pdf">Book of Abstracts</a>
+            
+            </li>
+            <li class="menuConfTitle">
+                <a href="/event/2018/surveys/">Surveys</a>             
+            </li>
+            <li class="menuConfTitle">
+                <a href="/event/2018/registrations/participants">Participant List</a>
+            </li>
+        </ul>
+        
+
+    <style>
+        .new_conference{
+            margin: 50px;
+        }
+
+        .new_conference label{
+           margin-left: 40%;
+        }
+
+        .new_conference input{
+            margin: 10px;
+        }
+
+        .event_style {
+            margin-left: 120%;
+        }
+
+    </style>
+        <div class="event_style" >
+            <form action="/event/registration" method="POST">
+                <label for="first_name" style="font-weight: bold; padding-right: 25px;">First Name</label>
+                <input type="text" id="first_name" placeholder="First Name" name="first_name" style="margin-left: 50px;"><br>
+                <label for="last_name" style="font-weight: bold; padding-right: 25px;">Last Name</label>
+                <input type="text" id="last_name" placeholder="Last Name" name="last_name"><br>
+                <label for="email_address" style="font-weight: bold; padding-right: 25px;">Email address</label>
+                <input type="text" id="email_address" placeholder="Email address" name="email_address" style="margin-left: 48px;"><br>
+                <label for="phone_number" style="font-weight: bold; padding-right: 25px;">Phone Number</label>
+                <input type="text" id="phone_number" name="phone_number" style="margin-left: 87px;">
+                <button type="submit" style="margin-left: 40%;">Register</button>
+                <button type="reset">cancel</button>
+            </form>
+        </div>
+    <script type="text/javascript" src="../static/timezone.js"></script>
+    <script type="text/javascript">
+        main();
+    </script>

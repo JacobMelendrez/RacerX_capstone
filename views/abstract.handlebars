@@ -3,9 +3,45 @@
         <a href="/">Home</a>
         <a href="/create_conference">Create Conference</a>
         <a href="/profile">My profile</a>
-        <a href="/network">Networking Lounge</a>
     </div>
-    <div class="conf_leftMenu">
+
+    <style>
+        .new_conference{
+            margin: 50px;
+        }
+
+        .event_style label{
+           margin-left: 40%;
+        }
+
+        .event_style input{
+            margin: 10px;
+        }
+
+        .event_style {
+            //margin-left: 120%;
+            //float: left;
+            margin: 50px
+        }
+
+    </style>
+
+        <div class="event_style" >
+                <form action="/event/abstracts" method="POST">
+                    <label for="abstract_title" style="font-weight: bold; padding-right: 25px;">Title</label>
+                    <input type="text" id="abstract_title" name="abstract_title" style="margin-left: 50px;"><br>
+                    <label for="abstract_content" style="font-weight: bold; padding-right: 25px; padding-top: 500px">Content</label>
+                    <textarea type="text" id="abstract_content" name="abstract_content" rows="4" cols="50" style="margin-left: 25px;"></textarea><br>
+                    <label for="abstract_author" style="font-weight: bold; padding-right: 25px;">Author</label>
+                    <input type="text" id="abstract_author" name="abstract_author" style="margin-left: 35px;"><br>
+                    <label for="abstract_comments" style="font-weight: bold; padding-right: 25px;">Comments</label>
+                    <input type="text" id="abstract_comments" name="abstract_comments" style="margin-left: 10px;">
+                    <button type="reset" style="margin-left: 40%;">Submit</button>
+                    <button type="reset">Cancel</button>
+                </form>
+        </div>     
+
+    <div class="conf_leftMenu" style="margin-top: -288px;">
                 
         <ul id="outer">
                 
@@ -63,41 +99,14 @@
             <li class="menuConfTitle">
                 <a href="/event/2018/registrations/participants">Participant List</a>
             </li>
+
+            
+
         </ul>
         
 
-    <style>
-        .new_conference{
-            margin: 50px;
-        }
 
-        .new_conference label{
-           margin-left: 40%;
-        }
 
-        .new_conference input{
-            margin: 10px;
-        }
-
-        .event_style {
-            margin-left: 120%;
-        }
-
-    </style>
-        <div class="event_style" >
-            <form action="/event/abstract" method="POST">
-                <label for="abstract_title" style="font-weight: bold; padding-right: 25px;">Title</label>
-                <input type="text" id="abstract_title" name="abstract_title" style="margin-left: 50px;"><br>
-                <label for="abstract_content" style="font-weight: bold; padding-right: 25px;">Content</label>
-                <textarea type="text" id="abstract_content" name="abstract_content" rows="4" cols="50"></textarea><br>
-                <label for="abstract_author" style="font-weight: bold; padding-right: 25px;">Author</label>
-                <input type="text" id="abstract_author" name="abstract_author" style="margin-left: 48px;"><br>
-                <label for="abstract_comments" style="font-weight: bold; padding-right: 25px;">Comments</label>
-                <input type="text" id="abstract_comments" name="abstract_comments" style="margin-left: 87px;">
-                <button type="submit" style="margin-left: 40%;">Submit</button>
-                <button type="reset">Cancel</button>
-            </form>
-        </div>
     <script type="text/javascript" src="../static/timezone.js"></script>
     <script type="text/javascript">
         main();

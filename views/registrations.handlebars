@@ -3,9 +3,47 @@
         <a href="/">Home</a>
         <a href="/create_conference">Create Conference</a>
         <a href="/profile">My profile</a>
-        <a href="/network">Networking Lounge</a>
     </div>
-    <div class="conf_leftMenu">
+
+        <style>
+        .new_conference{
+            margin: 50px;
+        }
+
+        .event_style label{
+           margin-left: 40%;
+        }
+
+        .event_style input{
+            margin: 10px;
+        }
+
+        .event_style {
+            //margin-right: 50%;
+            //float: right;
+            //margin-top: 2%;
+            margin: 50px;
+
+        }
+
+    </style>
+
+    <div class="event_style">
+            <form action="/event/registrations" method="POST">
+                <label for="first_name" style="font-weight: bold; padding-right: 25px;">First Name</label>
+                <input type="text" id="first_name" placeholder="First Name" name="first_name" style="margin-left: 50px;"><br>
+                <label for="last_name" style="font-weight: bold; padding-right: 25px;">Last Name</label>
+                <input type="text" id="last_name" placeholder="Last Name" name="last_name" style="margin-left: 51px;"><br>
+                <label for="email_address" style="font-weight: bold; padding-right: 25px;">Email address</label>
+                <input type="text" id="email_address" placeholder="Email address" name="email_address" style="margin-left: 27px;"><br>
+                <label for="phone_number" style="font-weight: bold; padding-right: 25px;">Phone Number</label>
+                <input type="text" id="phone_number" name="phone_number" style="margin-left: 23px;">
+                <button type="reset" style="margin-left: 45%;">Register</button>
+                <button type="reset">cancel</button>
+            </form>
+        </div>
+
+    <div class="conf_leftMenu" style="margin-top: -288px;">
                 
         <ul id="outer">
                 
@@ -66,38 +104,8 @@
         </ul>
         
 
-    <style>
-        .new_conference{
-            margin: 50px;
-        }
 
-        .new_conference label{
-           margin-left: 40%;
-        }
-
-        .new_conference input{
-            margin: 10px;
-        }
-
-        .event_style {
-            margin-left: 120%;
-        }
-
-    </style>
-        <div class="event_style" >
-            <form action="/event/registration" method="POST">
-                <label for="first_name" style="font-weight: bold; padding-right: 25px;">First Name</label>
-                <input type="text" id="first_name" placeholder="First Name" name="first_name" style="margin-left: 50px;"><br>
-                <label for="last_name" style="font-weight: bold; padding-right: 25px;">Last Name</label>
-                <input type="text" id="last_name" placeholder="Last Name" name="last_name"><br>
-                <label for="email_address" style="font-weight: bold; padding-right: 25px;">Email address</label>
-                <input type="text" id="email_address" placeholder="Email address" name="email_address" style="margin-left: 48px;"><br>
-                <label for="phone_number" style="font-weight: bold; padding-right: 25px;">Phone Number</label>
-                <input type="text" id="phone_number" name="phone_number" style="margin-left: 87px;">
-                <button type="submit" style="margin-left: 40%;">Register</button>
-                <button type="reset">cancel</button>
-            </form>
-        </div>
+        
     <script type="text/javascript" src="../static/timezone.js"></script>
     <script type="text/javascript">
         main();

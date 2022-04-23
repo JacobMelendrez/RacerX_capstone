@@ -92,6 +92,16 @@ app.get("/event", async (req, res) =>{
     res.render("event", {events});
 });
 
+// Survey for users to register
+app.get("/event/registrations", async (req, res) =>{
+    res.render("registrations", {user: req.user});
+})
+
+// Users can upload abstracts
+app.get("/event/abstracts", async (req, res) =>{
+    res.render("abstract", {user: req.user});
+})
+
 var eventID;
 
 app.post('/', async(req, res)=>{

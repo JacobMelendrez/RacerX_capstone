@@ -9,10 +9,10 @@
                 <a href="html_Pages/create_conference.html">Create Conference</a>
             </div>
         </div>-->
-        <a href="html_Pages/create_conference.html">Create Conference</a>
+        <a href="/create_conference">Create Conference</a>
         <!--<a href="#room booking">Room booking</a>-->
         <!--<a href="#administration">Administration</a>-->
-        <a href="/html_Pages/profile.html">My profile</a>
+        <a href="/profile">My profile</a>
     </div>
     <div class="conf_leftMenu">
                 
@@ -101,17 +101,21 @@
         <div class="timezone">US/Arizona</div>
     </div>
 </div>
+    <style>
+        .event_style {
+            margin-left: 15%;
+        }
+    </style>
     <form action="/event" method="GET">
-    <div>
+    <div class="event_Style">
         <p>
                 <b>Event Details</b>
-                    <b>{{events.title}}</b>
+                    <p>{{events.title}}</p>
                     <p>{{events.eventDescription}}</p>
                     <p>Starts: {{events.startDate}} - {{events.startTime}}</p>
                     <p>Ends: {{events.endDate}} - {{events.endTime}}</p>
                     <p>Zoom Link: <a href={{events.zoomLink}}>{{events.zoomLink}}</a></p>
         </p>
-        {{#each event}}{{/each}}
     </div>
     </form>
     <script type="text/javascript" src="../static/timezone.js"></script>

@@ -1,6 +1,8 @@
 -- Up
 CREATE TABLE Users (
     id INTEGER PRIMARY KEY,
+    firstName STRING,
+    lastName STRING,
     email STRING UNIQUE,
     username STRING,
     password STRING

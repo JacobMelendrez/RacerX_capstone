@@ -45,20 +45,6 @@ app.get("/", async (req, res) => {
     const eventList = await db.all(
         `SELECT * FROM Events;`
     );
-    /*await db.run("SELECT * FROM Events", async(err, res)=>{
-        if (err) throw err;
-        else{
-            console.log('success')
-            res.send(res)
-        }
-    });
-    console.log('Query ran successfully');*/
-    /*const messages = await db.all(`SELECT 
-        Messages.id,
-        Messages.content,
-        Users.username as authorName
-    FROM Messages LEFT JOIN Users WHERE Messages.authorId = Users.id`);
-    console.log('messages', messages)*/
     console.log(eventList);
     res.render("home", { eventList, user: req.user });
 });
@@ -126,13 +112,17 @@ app.post('/', async(req, res)=>{
 app.post('/register', async (req, res)=>{
     const db = await dbPromise;
     const {
+        firstName,
+        lastName,
         username,
         email,
         password
     } = req.body;
     const passwordHash = await bcrypt.hash(password, 10);
     try {
-        await db.run('INSERT INTO Users (username, email, password) VALUES (?,?,?);',
+        await db.run('INSERT INTO Users (firstName, lastName, username, email, password) VALUES (?,?,?,?,?);',
+            firstName,
+            lastName,
             username,
             email,
             passwordHash
@@ -169,18 +159,6 @@ app.post('/login', async (req, res) =>{
     }
 })
 
-/*app.post('/create_conference', async (req, res) =>{
-    //write messages to database
-    //messages.push(req.body.message);
-    if(!req.user){
-        res.status(401);
-        return res.send("must be logged in to post messages");
-    }
-    const db = await dbPromise;
-    await db.run('INSERT INTO Messages (content, authorId) VALUES (?, ?);', req.body.message, req.user.id);
-    res.redirect('/');
-});*/
-
 // Added code for post conference details to DB - Rishab 
 app.post('/create_conference', async(req, res) =>{
     //Write event details to db
@@ -207,6 +185,31 @@ app.post('/create_conference', async(req, res) =>{
 
     }
     res.redirect('/')
+});
+
+app.get('/profile', async (req, res)=>{
+    const db = await dbPromise;
+    try{
+        const profile = await db.get(
+            `SELECT * FROM Users WHERE id = ?`, req.user.id
+        )
+        console.log(profile);
+        res.render('profile', { profile, user: req.user })
+    } catch (e){
+        console.log({error: e});
+        res.redirect('login');
+    }
+})
+
+app.get("/", async (req, res) => {
+    //read messages from database
+    //console.log('request user', req.user);
+    const db = await dbPromise;
+    const eventList = await db.all(
+        `SELECT * FROM Events;`
+    );
+    console.log(eventList);
+    res.render("home", { eventList, user: req.user });
 });
 
 const setup = async () => {

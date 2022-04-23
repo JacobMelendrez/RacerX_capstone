@@ -27,20 +27,48 @@
         <!--<a href="eye">&#128065; &#x25BE;</a>
         <a hred="draw">&#9998;</a>-->
     </div>
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+    </style>
     <div class="main_body">
         <p style="text-align: center;">Welcome</p>
         <ul>
             <b>Events</b>
-            
+            <table>
+                <tr>
+                    <th>Event Title</th>
+                    <th>Event Description</th>
+                    <th>Event Date</th>
+                    <th>Event Time</th>
+                    <th>View</th>
+                </tr>
             {{#each eventList}}
             <form action="/" method="POST">
-                <li>
-                    <a href="/event">{{this.title}} - {{this.eventDescription}} - {{this.startDate}} - {{this.startTime}}</a>
-                    <input type="text" name="test" value="{{this.id}}" style="display:none;">
-                    <button type="submit">view</button>
-                </li>
+                <tr>
+                    <td>{{this.title}}</td>
+                    <td>{{this.eventDescription}}</td>
+                    <td>{{this.startDate}}</td>
+                    <td>{{this.startTime}}
+                    <input type="text" name="test" value="{{this.id}}" style="display:none;"></td>
+                    <td><button type="submit">view</button></td>
+                </tr>
             </form>
             {{/each}} 
+            </table>
             
         </ul>
     </div>

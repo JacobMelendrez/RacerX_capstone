@@ -1,12 +1,12 @@
     {{> header }}
     <div class="navbar">
-        <a href="../index.html">Home</a>
-        <a href="#create event">Create event &#x25BE;</a>
-        <a href="#room booking">Room booking</a>
-        <a href="#administration">Administration</a>
-        <a href="profile.html">My profile</a>
+        <a href="/">Home</a>
+        <a href="/create_conference">Create Event</a>
+        <!--<a href="#room booking">Room booking</a>
+        <a href="#administration">Administration</a>-->
+        <a href="/profile">My profile</a>
     </div>
-    <div class="event_navbar">
+    <!--<div class="event_navbar">
         <a style="color:rgb(241, 154, 23); font-size: larger; margin-right: 55%;">All events</a>
         <div class="search">
             <input type="text" placeholder="Search.." name="search">
@@ -24,14 +24,38 @@
         <a href="calender">&#128197;</a>
         <a href="eye">&#128065; &#x25BE;</a>
         <a hred="draw">&#9998;</a>
-    </div>
+    </div>-->
+    {{#if user}}
+    <style>
+        .pro_info img{
+           float: left; 
+           margin-left: 50px;
+        }
+        .pro_info p{
+            margin-left: 200px;
+        }
+    </style>
     <div class="dashboard">
         <p>Dashboard</p>
     </div>
-    <div class="profile_body" style="flex-direction: row;">
+    <div class="pro_info">
         <img src="/static/baseProfilePic.png"  width="100" height="100" class="profile">
-        <p class="profile">profile name</p>
+        <p>First Name &nbsp;= {{profile.firstName}}</p>
+        <p>Last Name  &nbsp;&nbsp;= {{profile.lastName}}</p>
+        <p>User Name  &nbsp;= {{profile.username}}</p>
+        <p>email &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= {{profile.email}}</p>
     </div>
+    {{else}}
+    <style>
+        div p{
+            font-size: x-large;
+            text-align: center;
+        }
+    </style>
+    <div>
+        <p> You must sign in before creating an event</p>
+    </div>
+    {{/if}}
     <script type="text/javascript" src="../static/timezone.js"></script>
     <script type="text/javascript">
         main();

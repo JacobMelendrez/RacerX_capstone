@@ -197,6 +197,10 @@ app.post('/create_conference', async(req, res) =>{
     res.redirect('/')
 });
 
+app.post("/event/registrations", async (req, res) =>{
+    res.redirect('/event')
+})
+
 app.get('/profile', async (req, res)=>{
     const db = await dbPromise;
     try{

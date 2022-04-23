@@ -1,0 +1,67 @@
+{{> header }}
+<div class="navbar">
+    <a href="/">Home</a>
+    <a href="/create_conference">Create Event</a>
+    <!--<a href="#room booking">Room booking</a>
+    <a href="#administration">Administration</a>-->
+    <a href="/profile">My profile</a>       
+</div>
+
+<h1 class="net_heading">Networking Lounge</h1>
+<textarea type="text" rows="30" cols="115">
+    {{#each message}}
+    {{this.authorName}} - {{this.content}}
+    {{/each}}
+</textarea>
+
+{{#if user}}
+<form action="/message" method="POST" class="in_message">
+    <input type="text" placeholder="message" name="message"  style="width: 400px; height: 30px; margin-left: 10px;"/><br>
+    <button type="submit" style="padding: 10px; margin: 10px">send</button>
+</form>
+<style>
+    textarea {
+        margin-left: 50px;
+        margin-top: 0px;
+        font-size: large;
+        font-family: 'Times New Roman', Times, serif;
+    }
+
+    .net_heading {
+        text-align: center;
+    }
+
+    .in_message{
+        float: left;
+    }
+</style>
+{{else}}
+<style>
+textarea {
+        margin-left: 50px;
+        margin-top: 0px;
+        font-size: large;
+        font-family: 'Times New Roman', Times, serif;
+    }
+
+    .net_heading {
+        text-align: center;
+    }
+
+    .net_heading2 {
+        float: left;
+    }
+
+    .in_message{
+        float: left;
+    }
+</style>
+<form action="/message" method="POST" class="in_message">
+</form>
+<h2 class="net_heading2">You must be logged in to send out messages</h2>
+{{/if}}
+
+<script type="text/javascript" src="../static/timezone.js"></script>
+<script type="text/javascript">
+    main();
+</script>

@@ -26,7 +26,15 @@ CREATE TABLE Events (
     endTime STRING
 );
 
+CREATE TABLE Messages(
+    id INTEGER PRIMARY KEY,
+    authorId INTEGER,
+    content STRING,
+    FOREIGN KEY (authorId) REFERENCES Users (id)
+);
+
 -- Down
 DROP TABLE Users;
 DROP TABLE AuthTokens;
 DROP TABLE Events;
+DROP TABLE Messages;

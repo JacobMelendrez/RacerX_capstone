@@ -222,6 +222,26 @@ app.get("/", async (req, res) => {
     res.render("home", { eventList, user: req.user });
 });
 
+app.get('/network',async (req, res)=>{
+    const db = await dbPromise;
+    const message = await db.all(
+        `SELECT
+        Messages.id,
+        Messages.content,
+        Users.username as authorName
+        FROM Messages LEFT JOIN Users WHERE Messages.authorId = Users.id`
+    );
+    res.render("network", {message , user: req.user  });
+})
+
+app.post('/message', async (req, res) =>{
+    //insert messages into the messages table in database.
+    const db = await dbPromise;
+    console.log(req.body.message);
+    await db.run('INSERT INTO Messages (content, authorId) VALUES (?, ?);', req.body.message, req.user.id);
+    res.redirect('/network');
+})
+
 const setup = async () => {
     const db = await dbPromise;
     await db.migrate();

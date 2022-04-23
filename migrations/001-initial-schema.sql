@@ -20,6 +20,7 @@ CREATE TABLE Events (
     title STRING,
     eventDescription STRING,
     zoomLink STRING,
+    businessLink STRING,
     startDate STRING,
     startTime STRING,
     endDate STRING,

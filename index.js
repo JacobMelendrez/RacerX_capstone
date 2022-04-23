@@ -82,6 +82,7 @@ app.get("/event", async (req, res) =>{
             title,
             eventDescription,
             zoomLink,
+            businessLink,
             startDate,
             startTime,
             endDate,
@@ -177,6 +178,7 @@ app.post('/create_conference', async(req, res) =>{
         event_title,
         event_description,
         zoom_link,
+        business_link,
         start_date,
         start_time,
         end_date,
@@ -185,8 +187,8 @@ app.post('/create_conference', async(req, res) =>{
 
     console.log(req.body);
     try{
-        await db.run('INSERT or REPLACE INTO Events ( title, eventDescription, zoomLink, startDate, startTime, endDate, endTime) VALUES ( ?, ?, ?, ?, ?, ?, ?);', 
-        event_title, event_description, zoom_link, start_date, start_time, end_date, end_time);
+        await db.run('INSERT or REPLACE INTO Events ( title, eventDescription, zoomLink, businessLink, startDate, startTime, endDate, endTime) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?);', 
+        event_title, event_description, zoom_link, business_link, start_date, start_time, end_date, end_time);
         console.log('Data inserted successfully');
     }
     catch (e){

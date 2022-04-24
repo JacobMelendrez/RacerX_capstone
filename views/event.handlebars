@@ -110,12 +110,17 @@
     <form action="/event" method="GET">
     <div class="event_Style">
         <p>
-                <b>Event Details</b>
+                <b>Event Details</b><br><br>
+                    <b style="font-size: large;"><u>Title</u></b>
                     <p>{{events.title}}</p>
+                    <b style="font-size: large;"><u>Event Description</u></b>
                     <p>{{events.eventDescription}}</p>
+                    <b style="font-size: large;"><u>Start/End Date and Time</u></b>
                     <p>Starts: {{events.startDate}} - {{events.startTime}}</p>
                     <p>Ends: {{events.endDate}} - {{events.endTime}}</p>
+                    <b style="font-size: large;"><u>Find out more by visiting their website</u></b>
                     <p>Business Website: <a href="https://{{events.businessLink}}">{{events.businessLink}}</a></p>
+                    <b style="font-size: large;"><u>Event Link</u></b>
                     <p>Zoom Link: <a href="https://{{events.zoomLink}}">{{events.zoomLink}}</a></p>
         </p>
     </div>

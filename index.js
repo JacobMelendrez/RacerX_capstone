@@ -43,9 +43,9 @@ app.get("/", async (req, res) => {
     //console.log('request user', req.user);
     const db = await dbPromise;
     const eventList = await db.all(
-        `SELECT * FROM Events;`
+        `SELECT * FROM Events ORDER BY startDate, startTime;`
     );
-    console.log(eventList);
+    console.log("eventList");
     res.render("home", { eventList, user: req.user });
 });
 
@@ -216,17 +216,6 @@ app.get('/profile', async (req, res)=>{
         res.redirect('login');
     }
 })
-
-app.get("/", async (req, res) => {
-    //read messages from database
-    //console.log('request user', req.user);
-    const db = await dbPromise;
-    const eventList = await db.all(
-        `SELECT * FROM Events;`
-    );
-    console.log(eventList);
-    res.render("home", { eventList, user: req.user });
-});
 
 app.get('/network',async (req, res)=>{
     const db = await dbPromise;

@@ -21,10 +21,10 @@ CREATE TABLE Events (
     eventDescription STRING,
     zoomLink STRING,
     businessLink STRING,
-    startDate STRING,
-    startTime STRING,
-    endDate STRING,
-    endTime STRING
+    startDate DATE,
+    startTime TIME,
+    endDate DATE,
+    endTime TIME
 );
 
 CREATE TABLE Messages(

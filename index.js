@@ -131,7 +131,8 @@ app.post('/register', async (req, res)=>{
     } = req.body;
     const passwordHash = await bcrypt.hash(password, 10);
     try {
-        await db.run('INSERT INTO Users (firstName, lastName, username, email, password) VALUES (?,?,?,?,?);',
+        if(password == password2){
+            await db.run('INSERT INTO Users (firstName, lastName, username, email, password) VALUES (?,?,?,?,?);',
             firstName,
             lastName,
             username,

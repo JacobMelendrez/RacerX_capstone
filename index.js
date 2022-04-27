@@ -241,8 +241,8 @@ const setup = async () => {
     const db = await dbPromise;
     await db.migrate();
 
-    app.listen(8080, () =>{
-        console.log("listening on http://localhost:8080"); //this line does not matter. just informative.
+    app.listen(8000, () =>{
+        console.log("listening on http://localhost:8000"); //this line does not matter. just informative.
     });
 }
 

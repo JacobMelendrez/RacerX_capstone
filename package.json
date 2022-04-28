@@ -21,7 +21,7 @@
     "cookie": "^0.4.2",
     "cookie-parser": "^1.4.6",
     "esm": "^3.2.25",
-    "express": "^4.17.3",
+    "express": "^4.18.0",
     "express-handlebars": "^6.0.5",
     "nodemon": "^2.0.15",
     "sqlite": "^4.0.25",

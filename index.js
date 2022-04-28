@@ -138,7 +138,7 @@ app.post('/register', async (req, res)=>{
             username,
             email,
             passwordHash
-        )
+        )}
         const user = await db.get('SELECT id FROM Users WHERE email=?;', email);
         const token = await grantAuthToken(user.id);
         res.cookie('authToken', token);

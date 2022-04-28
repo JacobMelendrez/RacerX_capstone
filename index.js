@@ -244,7 +244,7 @@ const setup = async () => {
 
     const port = process.env.port || 8080;
     app.listen(port, () =>{
-        console.log("listening on http://localhost:8000"); //this line does not matter. just informative.
+        console.log("listening on http://localhost:8080"); //this line does not matter. just informative.
     });
 }
 

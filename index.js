@@ -241,7 +241,8 @@ const setup = async () => {
     const db = await dbPromise;
     await db.migrate();
 
-    app.listen(8000, () =>{
+    const port = process.env.port || 8080;
+    app.listen(port, () =>{
         console.log("listening on http://localhost:8000"); //this line does not matter. just informative.
     });
 }

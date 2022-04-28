@@ -127,7 +127,8 @@ app.post('/register', async (req, res)=>{
         lastName,
         username,
         email,
-        password
+        password,
+        password2
     } = req.body;
     const passwordHash = await bcrypt.hash(password, 10);
     try {

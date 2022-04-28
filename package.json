@@ -2,7 +2,6 @@
   "name": "racerx_capstone",
   "version": "1.0.0",
   "description": "",
-  "type": "module",
   "main": "script.js",
   "scripts": {
     "start": "nodemon -r esm index.js"
